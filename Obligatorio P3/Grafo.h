@@ -18,7 +18,7 @@ void CrearG (GrafoMatriz &Z);
 //DEVUELVE SI PERTENECE O NO EL VERTICE
 bool PerteneceVertice (GrafoMatriz Z,int v);
 
-//DEVUELVE SI PERTENECE O NO EL ARISTA
+//DEVUELVE SI PERTENECE O NO LA ARISTA
 bool PerteneceArista (GrafoMatriz Z,int CoordA, int CoordB);
 
 //CREAR ARISTA POR MEDIO DE COORDENADAS
@@ -74,7 +74,9 @@ void MatrizCubica(GrafoMatriz A1, GrafoMatriz &C2);
 void DFSDistancia (GrafoMatriz G, int actual, int v, bool visitado [N], int & dist);
 
 void CopiarMatriz (GrafoMatriz A, GrafoMatriz &Cop);
+
 void RecorrerGrafo (GrafoMatriz G);
+
 void RecorrerGrafoDFSLargo (GrafoMatriz G);
 
 

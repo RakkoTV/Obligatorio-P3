@@ -8,95 +8,6 @@ typedef int GrafoMatriz[N][N];
 */
 
 
-///  dado un nodo imprime el  camino de ese nodo al 0
-void DFSLargo(GrafoMatriz G, int actual, bool visitado[N],ArrayConTope &Arr)
-{
-        visitado[actual] = true;
-bool parar=false;
-
-IncertarArrayConTope(Arr, actual);
-
-    for (int j=0; j<N; j++)
-    {
-        if ((G[actual][j] == 1)&&(parar==false))
-        {
-            if (!visitado[j])
-            {
-            DFSLargo(G, j, visitado, Arr);
-            }
-        parar=true;
-        }
-    }
-}
-
-//Hace una copia de A
-void CopiarMatriz (GrafoMatriz A, GrafoMatriz &Cop)
-{
-    for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < N; j++)
-        {
-        Cop[i][j] = A[i][j];
-          }
-    }
-}
-
-void DFS(GrafoMatriz G, int actual, bool visitado[N])
-{
-        visitado[actual] = true;
-printf ("\n ida:    %d", actual);
-
-    for (int j=0; j<N; j++)
-    {
-        if (G[actual][j] == 1)
-        {
-            if (!visitado[j])
-            {
-            DFS(G, j, visitado);
-            }
-        }
-    }
-///printf ("\n vuelta: %d", actual);
-}
-
-void RecorrerGrafo (GrafoMatriz G)
-{
-
-bool visitado[N];
-for (int i=0; i<N; i++)
-visitado[i] = false;
-
-
-for(int j=0; j<N; j++)///PARA QUE  VISITE LOS GRAFOS DISCONEXOS
-    {
-    if (!visitado[j])
-            {
-            DFS(G, j, visitado);
-
-            }
-    }
-}
-
-//cantidad de componentes conexas
-/// devuelve uno si es conexo o el numero de componentes conexas
-int CantidadComponentesConexas (GrafoMatriz G)
-{
-    int cant=0;
-bool visitado[N];
-for (int i=0; i<N; i++)
-visitado[i] = false;
-
-
-for(int j=0; j<N; j++)///PARA QUE  VISITE LOS GRAFOS DISCONEXOS
-    {
-    if (!visitado[j])
-            {
-            DFS(G, j, visitado);
-            cant++;
-            }
-    }
-   return cant;
-}
 
 //CREAR LA MATRIZ
 void CrearG (GrafoMatriz &Z)
@@ -142,6 +53,116 @@ for (int i = 0; i < N; i++)
         printf("\n");
     }
 }
+
+
+//Dados dos vertices, determinar si hay una arista que los une
+bool HayArista (GrafoMatriz G, int u, int v)
+{
+    return (bool) (G[u][v] == 1);
+
+}
+
+
+
+
+///  dado un nodo imprime el  camino de ese nodo al 0
+void DFSLargo(GrafoMatriz G, int actual, bool visitado[N],ArrayConTope &Arr)
+{
+        visitado[actual] = true;
+bool parar=false;
+
+IncertarArrayConTope(Arr, actual);
+
+    for (int j=0; j<N; j++)
+    {
+        if ((G[actual][j] == 1)&&(parar==false))
+        {
+            if (!visitado[j])
+            {
+            DFSLargo(G, j, visitado, Arr);
+            }
+        parar=true;
+        }
+    }
+}
+
+//Hace una copia de A
+void CopiarMatriz (GrafoMatriz A, GrafoMatriz &Cop)
+{
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+        Cop[i][j] = A[i][j];
+          }
+    }
+}
+
+
+void DFS(GrafoMatriz G, int actual, bool visitado[N])
+{
+        visitado[actual] = true;
+printf ("\n ida:    %d", actual);
+
+    for (int j=0; j<N; j++)
+    {
+        if (G[actual][j] == 1)
+        {
+            if (!visitado[j])
+            {
+            DFS(G, j, visitado);
+            }
+        }
+    }
+///printf ("\n vuelta: %d", actual);
+}
+
+
+
+
+
+void RecorrerGrafo (GrafoMatriz G)
+{
+
+bool visitado[N];
+for (int i=0; i<N; i++)
+visitado[i] = false;
+
+
+for(int j=0; j<N; j++)///PARA QUE  VISITE LOS GRAFOS DISCONEXOS
+    {
+    if (!visitado[j])
+            {
+            DFS(G, j, visitado);
+
+            }
+    }
+}
+
+//cantidad de componentes conexas
+/// devuelve uno si es conexo o el numero de componentes conexas
+int CantidadComponentesConexas (GrafoMatriz G)
+{
+    int cant=0;
+bool visitado[N];
+for (int i=0; i<N; i++)
+visitado[i] = false;
+
+
+for(int j=0; j<N; j++)///PARA QUE  VISITE LOS GRAFOS DISCONEXOS
+    {
+    if (!visitado[j])
+            {
+            DFS(G, j, visitado);
+            cant++;
+            }
+    }
+   return cant;
+}
+
+
+
+
 
 //DEVULVE UN NUEVO GRAFO CON LA MULTIPLICACION DE AXB
 //PRECONDICION QUE SEA POSIBLE MULTIPLICARLAS
@@ -230,6 +251,7 @@ else
 
 return pertenece;
 }
+
 
 
 
@@ -329,6 +351,8 @@ void DFSDarCamino (GrafoMatriz G, int desde,int actual, bool visitado [N], Array
     }
 
 }
+
+
 ///Devuelve un array con el mayor camino del grafo
 ///Criterio de desempate, dados dos caminos de mismo lago el primero es el mas largo
 void DarCaaminoMasLargoGrafoMatriz (GrafoMatriz G, ArrayConTope  &Arr)

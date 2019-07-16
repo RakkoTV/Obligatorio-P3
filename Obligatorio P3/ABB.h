@@ -24,10 +24,11 @@ typedef Nodoabb * Arbol;
 
 //Crear Arbol
 //Apunta a null
-void CrearArbol (Arbol &a);
+//void CrearArbol (Arbol &a);
+void MakeA (Arbol &a);
 
-
-
+bool MemberABB (Arbol a, String NombreLinea);
+bool EmptyA (Arbol a);
 void DeleteA (Arbol &a, String  NLinea);
 //Dado un valor y 2 arboles. Poner el valor como padre
  // y los arboles como hijos

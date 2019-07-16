@@ -18,6 +18,13 @@ int main()
    String ss1, ss2, ss3;
 
     //CrearG(Grafo);
+ Make(Ciu_dades); ///Creamos las ciudades
+
+ Arbol ArboLineas;
+ //CrearArbol(ArboLineas);
+ MakeA(ArboLineas);
+ Linea LineaNueva;
+
 
 
 
@@ -35,7 +42,7 @@ ss1="rocha";
         case 1:
         {
             ///printf("1. Registrar los nombres de todas las ciudades que visita la empresa.\n");
-            Make(Ciu_dades); ///Creamos las ciudades
+
             int Sal=0;
              int contado=0;//Inicia contador
             do /// Cargamos cada una de las  B=3.. ciudades
@@ -71,20 +78,20 @@ ss1="rocha";
             {
                 String s, s2;
                 int Sal=0;
-                 printf("\n Agregar un nuevo tramo? \n");
+                 printf("\n Agregar un nuevo tramo: \n");
                 do
                 {
 
-                printf("\n Ingrese dos ciudades para saber si hay un tramo entre ellas:");
+                printf("\n Ingrese dos ciudades para AGREGAR un tramo entre ellas:");
 
 
                         StrCrear(s);
                         StrCrear(s2);
-                        printf("\n Ingrese el Nombre de la primer ciudad:");
+                        printf("\n Ingrese el Nombre de la primer ciudad: ");
 
                       CargarString(s);
                        fflush(stdin);
-                        printf("\n Ingrese el Nombre de la segunda ciudad:");
+                        printf("\n Ingrese el Nombre de la segunda ciudad: ");
                         CargarString(s2);
                         fflush(stdin);
 
@@ -107,8 +114,6 @@ ss1="rocha";
 
 
 
-
-
                 printf("\n Desea ingresar un nuevo tramo? 1- SI, 2- NO\n");
                 scanf("%d", &Sal);
                 }while(Sal!=2);
@@ -119,16 +124,16 @@ ss1="rocha";
 
 
 
-        printf("\n Ingrese dos ciudades para saber si hay un tramo entre ellas:");
+        printf("\n Ingrese dos ciudades para saber si hay una sequencia que las una:");
 
         String s, s2;
         StrCrear(s);
         StrCrear(s2);
-        printf("\n Ingrese el Nombre de la ciudad:");
+        printf("\n Ingrese el Nombre de la ciudad de Origen:  ");
 
       CargarString(s);
        fflush(stdin);
-        printf("\n Ingrese el Nombre de la ciudad de Destino:");
+        printf("\n Ingrese el Nombre de la ciudad de Destino: ");
         CargarString(s2);
         fflush(stdin);
 
@@ -137,15 +142,19 @@ ss1="rocha";
             printf("\nLa o las ciudades ingresadas  no existen vuelva a ingresar");
             fflush(stdin);
         }
+        else
+            {
+
+
+            printf("\nMandar el dfs");
+            }
+
 }
-
-
-
-
-
 
             break;
         case 4:
+            //printf("4. Ingresar una nueva línea a la empresa,
+            //chequeando que no existiera previamente otra línea con el mismo código alfanumérico.\n");
 {
 
 
@@ -155,7 +164,42 @@ int Salx=0;
 
 
 
-               printf("\n Agregar un nuevo tramo\n");
+               printf("\n AIngresar una nueva línea a la empresa\n");
+
+
+
+
+               String NomAux1;
+               StrCrear(NomAux1);/// VER SI AL FINAL HAY QUE DESTRUIR
+               printf("\nIngrese el nombre de la Linea: ");
+               CargarString(NomAux1);
+               fflush(stdin);
+               if(!EmptyA(ArboLineas)) // Si el arbol no es vacio podemos hacer member
+               {
+                   if(MemberABB(ArboLineas,NomAux1))
+                    {
+                    printf("*****Hacer esta parte, cargar una nueva linea");
+                    InsertA(ArboLineas, LineaNueva);
+
+                    }
+                        else
+                        {
+                        printf("\n Error, La linea que intenta ingresar ya existe");
+                        }
+               }
+               else
+               {
+                   ///si esta vacio lo ingresa
+
+                    InsertA(ArboLineas, LineaNueva);
+               }
+
+
+
+
+
+
+
                Parada x;
                int Contador=1;
 
