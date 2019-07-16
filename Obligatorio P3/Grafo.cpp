@@ -139,6 +139,103 @@ for(int j=0; j<N; j++)///PARA QUE  VISITE LOS GRAFOS DISCONEXOS
     }
 }
 
+
+//Devuelve un array con los vertices que componen el camino desde al
+void DFSDarCaminoGrafoMatriz (GrafoMatriz G, int desde ,int al, ArrayConTope &Arr )
+{
+
+    IncertarArrayConTope(Arr, desde);
+   // int dist = 0;/// verificar esta variable
+    bool visitado [N];
+        for (int i = 0; i < N; i++)
+        {
+        visitado [i] = false;
+        }
+
+    DFSDarCamino(G, desde,al, visitado, Arr);
+}
+
+
+//Devuelve si hay camino desde al
+bool DFSHayCamino (GrafoMatriz G, int desde ,int al)
+{
+
+    bool visitado [N];
+        for (int i = 0; i < N; i++)
+        {
+        visitado [i] = false;
+        }
+    DFSCamino(G, desde,al, visitado);
+
+
+    for (int i = 0; i < N; i++)
+        {
+
+        printf("\n VISITO AL %d ", (int) visitado[i]);
+        }
+
+
+    return visitado[al];
+}
+//Operación auxiliar para DFSHayCamino
+void DFSCamino (GrafoMatriz G, int actual,int desde, bool visitado [N])
+{
+    visitado [actual] = true;
+
+    int j = 0;
+
+        while (j < N && !visitado [desde])
+        {
+            if (G [actual][j] == 1)
+            {
+                if (!visitado [j])
+                {
+                   DFSCamino (G,j, desde, visitado);
+                }
+            }
+            j++;
+        }
+
+
+}
+
+
+
+
+
+
+//Operación auxiliar para Cargar el camino
+void DFSDarCamino (GrafoMatriz G, int desde,int actual, bool visitado [N], ArrayConTope &Arr)
+{
+    visitado [actual] = true;
+
+    int j = 0;
+
+        while (j < N && !visitado [desde])
+        {
+            if (G [actual][j] == 1)
+            {
+                if (!visitado [j])
+                {
+                   DFSDarCamino (G,desde, j, visitado, Arr);
+                }
+            }
+            j++;
+        }
+    if ((actual != desde) && (visitado [desde]))/// no se que quise poner?pero anda
+    {
+        IncertarArrayConTope(Arr, actual);
+    }
+
+}
+
+
+
+
+
+
+
+
 //cantidad de componentes conexas
 /// devuelve uno si es conexo o el numero de componentes conexas
 int CantidadComponentesConexas (GrafoMatriz G)
@@ -312,45 +409,7 @@ void DFSDistancia (GrafoMatriz G, int actual, int v, bool visitado [N], int & di
 }
 
 
-//Devuelve un array con los vertices que componen el camino desde al
-void DFSDarCaminoGrafoMatriz (GrafoMatriz G, int desde ,int al, ArrayConTope &Arr )
-{
 
-    IncertarArrayConTope(Arr, desde);
-   // int dist = 0;/// verificar esta variable
-    bool visitado [N];
-        for (int i = 0; i < N; i++)
-        {
-        visitado [i] = false;
-        }
-
-    DFSDarCamino(G, desde,al, visitado, Arr);
-}
-
-//Operación auxiliar para Cargar el camino
-void DFSDarCamino (GrafoMatriz G, int desde,int actual, bool visitado [N], ArrayConTope &Arr)
-{
-    visitado [actual] = true;
-
-    int j = 0;
-
-        while (j < N && !visitado [desde])
-        {
-            if (G [actual][j] == 1)
-            {
-                if (!visitado [j])
-                {
-                   DFSDarCamino (G,desde, j, visitado, Arr);
-                }
-            }
-            j++;
-        }
-    if ((actual != desde) && (visitado [desde]))/// no se que quise poner?pero anda
-    {
-        IncertarArrayConTope(Arr, actual);
-    }
-
-}
 
 
 ///Devuelve un array con el mayor camino del grafo

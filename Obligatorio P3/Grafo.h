@@ -79,7 +79,10 @@ void RecorrerGrafo (GrafoMatriz G);
 
 void RecorrerGrafoDFSLargo (GrafoMatriz G);
 
-
+//Devuelve si hay camino desde al
+bool DFSHayCamino (GrafoMatriz G, int desde ,int al);
+//Operación auxiliar para DFSHayCamino
+void DFSCamino (GrafoMatriz G, int desde,int actual, bool visitado [N]);
 //Devuelve un array con los vertices que componen el camino desde al
 void DFSDarCaminoGrafoMatriz (GrafoMatriz G, int desde ,int al, ArrayConTope &Arr );
 //Operación auxiliar para Cargar el camino

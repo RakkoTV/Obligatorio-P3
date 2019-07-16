@@ -146,7 +146,23 @@ ss1="rocha";
             {
 
 
-            printf("\nMandar el dfs");
+
+                int CodCid3, CodCid4;
+
+
+                CodCid3=DarCodigo(Find(Ciu_dades, s));
+                CodCid4=DarCodigo(Find(Ciu_dades, s2));
+                printf("\nCodigo 1: %d,Codigo 2: %d  ",CodCid3, CodCid4);
+                if(DFSHayCamino(Grafo, CodCid3, CodCid4)==true)
+                {
+
+                    printf("\nhay una sequencia que las une ");
+                }
+                else{
+
+                    printf("\n NO hay una sequencia que las une ");
+                }
+
             }
 
 }
