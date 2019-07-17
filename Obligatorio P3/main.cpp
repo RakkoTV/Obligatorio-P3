@@ -6,13 +6,15 @@
 int main()
 {
     int Op1, op3;
+ArrayConTope ARRE;
+InicializarArrayConTope(ARRE);
 
     Diccionario_Ciudad Ciu_dades;
     Ciudad Ci_d, CidAux;
     LPPF TramoDeParadas;
     Crear(TramoDeParadas);
     GrafoMatriz Grafo;
-        CrearG(Grafo); //Lo puse aca y anda
+    CrearG(Grafo); //Lo puse aca y anda
 
 
    String ss1, ss2, ss3;
@@ -168,6 +170,8 @@ ss1="rocha";
 }
 
             break;
+
+
         case 4:
             //printf("4. Ingresar una nueva línea a la empresa,
             //chequeando que no existiera previamente otra línea con el mismo código alfanumérico.\n");
@@ -192,9 +196,85 @@ int Salx=0;
                fflush(stdin);
                if(!EmptyA(ArboLineas)) // Si el arbol no es vacio podemos hacer member
                {
-                   if(MemberABB(ArboLineas,NomAux1))
+                   if(!MemberABB(ArboLineas,NomAux1))
                     {
                     printf("*****Hacer esta parte, cargar una nueva linea");
+
+
+                    ///
+                LPPF TramoAux;
+                Crear(TramoAux);
+                Parada Parada1;
+                                        String Origen, Destino;
+                                        StrCrear(Origen);
+                                        StrCrear(Destino);
+                                        printf("\n Ingrese el Nombre de la ciudad de Origen:  ");
+                                        CargarString(Origen);
+
+                                       fflush(stdin);
+                                        printf("\n Ingrese el Nombre de la ciudad de Destino: ");
+                                        CargarString(Destino);
+                                        fflush(stdin);
+
+
+
+
+
+                                        if(!Member(Ciu_dades, Origen)&&(!Member(Ciu_dades, Destino)))
+                                        {
+                                            printf("\nLa o las ciudades ingresadas  no existen vuelva a ingresar o no existe un camino entre ambas");
+                                            fflush(stdin);
+                                        }
+                                        else
+                                            {
+                                                Ciudad CidA, CidB;
+                                                CidA=Find(Ciu_dades, Origen);
+                                                CidB=Find(Ciu_dades, Destino);
+
+                                                int CodOrigen=DarCodigo(CidA); // numero de parada 1
+                                                int CodDestino=DarCodigo(CidB);// numero de parada tope+1
+
+                                                if(!DFSHayCamino(Grafo,CodOrigen, CodDestino))
+                                                {
+
+                                                }
+                                                else
+                                                {
+
+
+
+                                                //int CodOrigen=DarCodigo(CidA); // numero de parada 1
+                                               // int CodDestino=DarCodigo(CidB);// numero de parada tope+1
+
+                                               DFSDarCaminoGrafoMatriz(Grafo,CodOrigen, CodDestino, ARRE );
+
+                                               int NumParda=ARRE.tope-1; // vale 1 // ver otros casos
+
+                                               Parada1=CargarParadaInicioFin(CidB,ARRE.tope);
+                                               Insfront(TramoAux, Parada1);
+
+                                               for(int i=NumParda;i>1; i--)
+                                                   {
+
+                                                    Parada1=CargarParda(i, Ciu_dades, ARRE.InfoVertice[i]);
+                                                    Insfront(TramoAux, Parada1);
+                                                   }
+
+                                                Parada1=CargarParadaInicioFin(CidA,1);
+
+                                                Insfront(TramoAux, Parada1);
+
+
+
+                                               }
+
+
+
+
+                        }
+                            Linea LineaNueva;
+                        CargarLinea( LineaNueva,NomAux1,TramoAux);
+
                     InsertA(ArboLineas, LineaNueva);
 
                     }
@@ -216,35 +296,6 @@ int Salx=0;
 
 
 
-               Parada x;
-               int Contador=1;
-
-               //CargarParda(x,Contador,Ciu_dades );
-               Contador ++;
-
-
-               MostrarParada(x);
-//                String NomAux1;
-//                StrCrear(NomAux1);/// VER SI AL FINAL HAY QUE DESTRUIR
-//                String NomAux2;
-//                StrCrear(NomAux2);/// VER SI AL FINAL HAY QUE DESTRUIR
-//                printf("\nIngrese el nombre de la ciudad de partida");
-//                CargarString(NomAux1);
-//                fflush(stdin);
-//
-//
-//                printf("\nIngrese el nombre de la ciudad destino");
-//                CargarString(NomAux2);
-//                fflush(stdin);
-//                if((Member(Ciu_dades,NomAux1))&&(Member(Ciu_dades,NomAux2)))
-//                {
-//                    AgregarTramo(TramoDeParadas,NomAux1,NomAux2 );
-//                }
-//                else
-//                {
-//                    printf("\n Error, uno o los dos nombre ingresados no son ciudades");
-//                }
-
                 fflush(stdin);
                 printf("\n Desea ingresar otro Tramo? 1- SI, 2- NO\n");
                 scanf("%d", &Salx);
@@ -252,7 +303,7 @@ int Salx=0;
 
 
             }while(Salx!=2);
-            }
+}
 
 
             break;

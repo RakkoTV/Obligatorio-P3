@@ -24,4 +24,7 @@ bool LineaMenorPorCodigo(Linea Lin, String CodLin);
 //Dados una linea y un nombre de linea devulve true si son de igual nombre
 bool LineaIgual (Linea Lin, String CodLin);
 
+//Dado un String y un Tramo se crea Linea
+void CargarLinea(Linea &Lin, String NombreLinea, LPPF Tramo );
+
 #endif // LINEA_H_INCLUDED

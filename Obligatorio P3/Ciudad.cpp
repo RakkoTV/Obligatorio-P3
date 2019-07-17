@@ -7,6 +7,9 @@ typedef struct{
 */
 
 
+
+
+
 void CargarCiudad(Ciudad &Ciu, int Autocincrementado)
 {
 

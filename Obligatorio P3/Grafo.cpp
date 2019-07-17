@@ -154,6 +154,34 @@ void DFSDarCaminoGrafoMatriz (GrafoMatriz G, int desde ,int al, ArrayConTope &Ar
 
     DFSDarCamino(G, desde,al, visitado, Arr);
 }
+//Operación auxiliar para Cargar el camino
+void DFSDarCamino (GrafoMatriz G, int desde,int actual, bool visitado [N], ArrayConTope &Arr)
+{
+    visitado [actual] = true;
+
+    int j = 0;
+
+        while (j < N && !visitado [desde])
+        {
+            if (G [actual][j] == 1)
+            {
+                if (!visitado [j])
+                {
+                   DFSDarCamino (G,desde, j, visitado, Arr);
+                }
+            }
+            j++;
+        }
+    if ((actual != desde) && (visitado [desde]))/// no se que quise poner?pero anda
+    {
+        IncertarArrayConTope(Arr, actual);
+    }
+
+}
+
+
+
+
 
 
 //Devuelve si hay camino desde al
@@ -204,30 +232,7 @@ void DFSCamino (GrafoMatriz G, int actual,int desde, bool visitado [N])
 
 
 
-//Operación auxiliar para Cargar el camino
-void DFSDarCamino (GrafoMatriz G, int desde,int actual, bool visitado [N], ArrayConTope &Arr)
-{
-    visitado [actual] = true;
 
-    int j = 0;
-
-        while (j < N && !visitado [desde])
-        {
-            if (G [actual][j] == 1)
-            {
-                if (!visitado [j])
-                {
-                   DFSDarCamino (G,desde, j, visitado, Arr);
-                }
-            }
-            j++;
-        }
-    if ((actual != desde) && (visitado [desde]))/// no se que quise poner?pero anda
-    {
-        IncertarArrayConTope(Arr, actual);
-    }
-
-}
 
 
 

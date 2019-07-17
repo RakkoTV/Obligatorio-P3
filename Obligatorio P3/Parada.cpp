@@ -10,13 +10,27 @@ int NumPar;
 }Parada;
 */
 
+
+
+Parada CargarParadaInicioFin(Ciudad C, int N)
+{
+    Parada Para;
+    Para.Ciud=C;
+    Para.NumPar=N;
+    return Para;
+}
+
+
+
+
+
 //
-Parada CargarParda (int NParda, Diccionario_Ciudad D)
+Parada CargarParda (int NParda, Diccionario_Ciudad D, int ValidarCodigoCiudad )
 {
 
 Parada Par;
 String s;
-
+Ciudad CidAux;
     do
     {
 
@@ -25,25 +39,28 @@ String s;
         StrCrear(s);
         //StrCrear(s2);
         printf("\n Ingrese el Nombre de la ciudad:");
-
       CargarString(s);
        fflush(stdin);
-//        printf("\n Ingrese el Nombre de la ciudad de Destino:");
-//
-//        CargarString(s2);
-//        fflush(stdin);
+
+
+
 
         if(!Member(D, s))
         {
             printf("\nLa ciudad ingresada  no existen vuelva a ingresar");
             fflush(stdin);
         }
-    }while(!Member(D, s));
+        else
+        {
+
+            CidAux=Find(D,s );
+        }
+    }while(!Member(D, s)&&(DarCodigo(CidAux)!=ValidarCodigoCiudad));
 
 
     ///Ciudad origen
-    Par.Ciud=Find(D,s);
-    Par.NumPar=NParda;// auto incrementado arranca en 2
+    Par.Ciud=CidAux;
+    Par.NumPar=ValidarCodigoCiudad;// auto incrementado arranca en 2
 
     //Insfront(L, Par);
     ///Ciudad Destino
