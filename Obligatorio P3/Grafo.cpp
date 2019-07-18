@@ -196,11 +196,11 @@ bool DFSHayCamino (GrafoMatriz G, int desde ,int al)
     DFSCamino(G, desde,al, visitado);
 
 
-    for (int i = 0; i < N; i++)
-        {
-
-        printf("\n VISITO AL %d ", (int) visitado[i]);
-        }
+//    for (int i = 0; i < N; i++)
+//        {
+//
+//        printf("\n VISITO AL %d ", (int) visitado[i]);
+//        }
 
 
     return visitado[al];

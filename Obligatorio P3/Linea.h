@@ -29,5 +29,5 @@ void CargarLinea(Linea &Lin, String NombreLinea, LPPF Tramo );
 
 void MostrarLinea(Linea Lin);
 void MostrarLinea2(Linea Lin);
-
+void ModificarLinea(Linea &Lin, Parada DestinoNueva);
 #endif // LINEA_H_INCLUDED

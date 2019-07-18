@@ -272,15 +272,12 @@ int Salx=0;
                StrCrear(NomAux1);/// VER SI AL FINAL HAY QUE DESTRUIR
                printf("\nIngrese el nombre de la Linea: ");
                CargarString(NomAux1);
-                printf("\nEl nombre ingresado es: ");
-               MostrarString(NomAux1);
-               fflush(stdin);
+
 
                if(EmptyA(ArboLineas)==true) // Si el arbol  es vacio
                {
                 CargarNodoAux(ArboLineas, Ciu_dades,Grafo, ARRE, NomAux1 );
                 MostrarString(NomAux1);
-                printf("\n ************Destruimos en else***************\n");
                 StrDestruir(NomAux1);
                 fflush(stdin);
                }
@@ -321,6 +318,8 @@ int Salx=0;
         case 5:
 
             {
+                printf("\nDatos basicos de todas las lineas de la empresa: ");
+
                 if(EmptyA2(ArboLineas)==false)
                 {
                    orden2 (ArboLineas);
@@ -336,10 +335,11 @@ int Salx=0;
                 String NomLin;
                 StrCrear(NomLin);
                 printf("\nIngrese el nombre de la Linea a modificar: ");
+                CargarString(NomLin);
 
                fflush(stdin);
 
-               if(EmptyA(ArboLineas)==true)/// SI EL ARBOL ESTA VACIO
+               if(EmptyA2(ArboLineas)==true)/// SI EL ARBOL ESTA VACIO
                {
                    printf("\nNo hay lineas para modificar");
                }
@@ -369,15 +369,23 @@ int Salx=0;
 
                             if (DFSHayCamino(Grafo,CodDesde,CodCiudNuevaAsta))// si hay un camino de la la vieja a la nueva
                             {
-
-                                ///int NumUltimaParada = DarNumeroDeParda(UltimaParada); //tomo el numero de la ultima parada
-                                Parada NuevaParda=  DevolverPardaAux(CiudDeLaNuevaParda, UltimaParada);//Va devolver la nueva parada
-                                Insback(TramoAmodificar,NuevaParda); // ingresamos esa nueva parada a la linea
+                                printf("\n Hay un camino ver si esta ingresando el nuevo tramo al arbol");
 
 
+                                Parada NuevaParada=  DevolverPardaAux(CiudDeLaNuevaParda, UltimaParada);//Va devolver la nueva parada
+                                printf("\n ****La nueva parada a ingresar es:");
+                                 MostrarParada(NuevaParada);
+                                 printf("\n ****");
+                                 ModificarLinea(LinneAmodificar, NuevaParada); ///Le agregamos al final de la linea una nueva parada
+                                //Insback(TramoAmodificar,NuevaParada); // ingresamos esa nueva parada a la linea
+                                //printf("\n Paradas modificadas****");
+                               //ListarParadas(TramoAmodificar);
+                               //printf("\n ****");
                                 ModifyA(ArboLineas, LinneAmodificar); //le mandamos la nueva linea que esta modificada solamente los tramos
                                 //esto va a eliminar y volver a cargar con la informacion que contiene que esta actualizada
-
+                                    printf("\n La nueva linea modifica es****");
+                                    MostrarLinea(LinneAmodificar);
+                                    printf("\n ****");
                             }
                             else
                             {
@@ -411,15 +419,28 @@ Se debe chequear que efectivamente exista un tramo entre la nueva parada y la ul
         case 7:
 
             {
+                printf("\nDado el codigo que identifica a una linea, Listar todas las paradas,  : ");
                 String Auxz;
                 StrCrear(Auxz);/// VER SI AL FINAL HAY QUE DESTRUIR
                printf("\nIngrese el Codigo de la Linea: ");
                CargarString(Auxz);
-                printf("\nEl Codigo ingresado es: ");
-               MostrarString(Auxz);
+
                fflush(stdin);
-               Linea L1=FindABB(ArboLineas,Auxz );
-                MostrarLinea(L1);
+               if(EmptyA2(ArboLineas))
+                {
+
+                printf("\nNo hay ciudades para mostrar");
+
+               }
+               else if(MemberABB(ArboLineas, Auxz))
+                    {
+                    Linea L1=FindABB(ArboLineas,Auxz );
+                    MostrarLinea(L1);
+                    }
+                        else
+                        {
+                        printf("\nEl nombre ingresado no existe");
+                        }
 
             }
             break;

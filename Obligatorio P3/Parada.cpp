@@ -75,7 +75,7 @@ Ciudad CidAux;
 Parada DevolverPardaAux(Ciudad Origen, Parada Destino)
 {
     Parada nueva;
-    nueva.NumPar =  Destino.NumPar +1;
+    nueva.NumPar =  Destino.NumPar +1;///sumamos 1 y se lo ponemos a la nueva parada
     nueva.Ciud = Origen;
     return nueva;
 }

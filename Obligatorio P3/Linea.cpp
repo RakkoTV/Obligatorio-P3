@@ -89,4 +89,10 @@ void MostrarLinea2(Linea Lin)
 
 }
 
+void ModificarLinea(Linea &Lin, Parada DestinoNueva)
+{
+    ///Le pone al final de la linea una nueva parada
+    Insback(Lin.Tramo, DestinoNueva);
+}
+
 
