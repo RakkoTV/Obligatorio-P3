@@ -336,47 +336,48 @@ int Salx=0;
                 String NomLin;
                 StrCrear(NomLin);
                 printf("\nIngrese el nombre de la Linea a modificar: ");
-               CargarString(NomLin);
-                printf("\nEl nombre ingresado es: ");
-               MostrarString(NomLin);
+
                fflush(stdin);
 
-               if(EmptyA(ArboLineas)==true)
+               if(EmptyA(ArboLineas)==true)/// SI EL ARBOL ESTA VACIO
                {
                    printf("\nNo hay lineas para modificar");
                }
                else
                {
-                   if(MemberABB(ArboLineas,NomLin))
+                   if(MemberABB(ArboLineas,NomLin))//AGREGAR UN TRAMO
                    {
-                       String NomCiudad;
+                        String NomCiudad;
                         StrCrear(NomCiudad);
                         printf("\nIngrese el nombre de Cuidad que desea agregar a la Linea: ");
                         CargarString(NomCiudad);
 
-                        if(Member(Ciu_dades,NomCiudad)==true)
+                        if(Member(Ciu_dades,NomCiudad)==true)// SI ESA CIUDAD EXISTE
                         {
-                            Ciudad CiudNueva;
-                            CiudNueva= Find(Ciu_dades,NomCiudad);
-                            int CodCiudNueva = DarCodigo(CiudNueva);
-                                Linea Linnea= FindABB(ArboLineas,NomLin);///FIND DEVUELVE UNA LINEA
+                            Ciudad CiudDeLaNuevaParda;
+                            CiudDeLaNuevaParda= Find(Ciu_dades,NomCiudad); // BUSCO ESA CIUDAD
 
-                            LPPF Tramo6 =DarTramo(Linnea);
-                            Parada UltimaParada = Ultimo(Tramo6);
-                           int CodDesde= DarCodigoCiudadParada(UltimaParada);
+                            Linea LinneAmodificar= FindABB(ArboLineas,NomLin);//Busco la linea a modiicar
+
+                            LPPF TramoAmodificar =DarTramo(LinneAmodificar); //le saco el tramo
+                            Parada UltimaParada = Ultimo(TramoAmodificar); //TOMO LA ULTIMA PARADA
+
+                            int CodCiudNuevaAsta = DarCodigo(CiudDeLaNuevaParda); //tomo el codigo de la ciudad nueva
+
+                           int CodDesde= DarCodigoCiudadParada(UltimaParada); // tomo el codigo de la ultima parada
                             //Dar codigo de la ciudad
 
-                            if (DFSHayCamino(Grafo,CodDesde,CodCiudNueva))
+                            if (DFSHayCamino(Grafo,CodDesde,CodCiudNuevaAsta))// si hay un camino de la la vieja a la nueva
                             {
 
-                                int NumUltimaParada = DarNumeroDeParda(UltimaParada);
-                                Parada nueva1=  DevolverPardaAux(CiudNueva, UltimaParada);//Va devolver una parada
-                                Insback(Tramo6,nueva1);
-                                //CREAR LINEA Y MOSTRARLA
+                                ///int NumUltimaParada = DarNumeroDeParda(UltimaParada); //tomo el numero de la ultima parada
+                                Parada NuevaParda=  DevolverPardaAux(CiudDeLaNuevaParda, UltimaParada);//Va devolver la nueva parada
+                                Insback(TramoAmodificar,NuevaParda); // ingresamos esa nueva parada a la linea
 
-                                printf("\nLLAMAR A ModifyA()");
-                                //Linea
-                                //MostrarLinea()
+
+                                ModifyA(ArboLineas, LinneAmodificar); //le mandamos la nueva linea que esta modificada solamente los tramos
+                                //esto va a eliminar y volver a cargar con la informacion que contiene que esta actualizada
+
                             }
                             else
                             {

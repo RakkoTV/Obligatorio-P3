@@ -189,12 +189,13 @@ void BorrarMinimo(Arbol &a)
 void ModifyA(Arbol &a, Linea Nueva)
 {
 /// precondicion member
-///no se modifica el Codlinea solo se modifica la secuancia de paradas
-String StrAux;
-StrCrear(StrAux);
-DarCodigoLinea(Nueva, StrAux);
+///no se modifica el nOMBRE DE LA LINEA solo se modifica la secuancia de paradas
+///se va a eliminar la linea y se vuelve a cargar con la informacion actualizada
+String StrLineaVieja;
+StrCrear(StrLineaVieja);
+DarCodigoLinea(Nueva, StrLineaVieja); //busca el codigo(Nombre) de la linea
 
-DeleteA(a,StrAux );
+DeleteA(a,StrLineaVieja );// elimina la linea antigua del arbol
 
 InsertA(a, Nueva);
 
