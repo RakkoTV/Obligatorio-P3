@@ -10,9 +10,21 @@ void MakeA (Arbol &a)
     a=NULL;
 }
 
+///Devolver si es Vacio un arbol
+bool EmptyA2 (Arbol a)
+{
+    bool Esta=false;
+
+    if(a==NULL)
+    {
+        Esta=true;
+    }
+
+    return Esta;
+}
 
 
-//Devolver si es Vacio un arbol
+///Devolver si es Vacio un arbol
 bool EmptyA (Arbol a)
 {
     bool Es=false;
@@ -176,6 +188,8 @@ void BorrarMinimo(Arbol &a)
 //no se modifica el Codlinea solo se modifica la secuancia de paradas
 void ModifyA(Arbol &a, Linea Nueva)
 {
+/// precondicion member
+///no se modifica el Codlinea solo se modifica la secuancia de paradas
 String StrAux;
 StrCrear(StrAux);
 DarCodigoLinea(Nueva, StrAux);

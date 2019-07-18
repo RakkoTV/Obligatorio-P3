@@ -276,7 +276,7 @@ int Salx=0;
                MostrarString(NomAux1);
                fflush(stdin);
 
-               if(EmptyA(ArboLineas)==true) // Si el arbol no es vacio podemos hacer member
+               if(EmptyA(ArboLineas)==true) // Si el arbol  es vacio
                {
                 CargarNodoAux(ArboLineas, Ciu_dades,Grafo, ARRE, NomAux1 );
                 MostrarString(NomAux1);
@@ -321,9 +321,12 @@ int Salx=0;
         case 5:
 
             {
-
-                orden2 (ArboLineas);
-
+                if(EmptyA2(ArboLineas)==false)
+                {
+                   orden2 (ArboLineas);
+                }
+                else
+                    printf("\nNo hay ninguna linea\n");
 
             }
 
@@ -332,7 +335,7 @@ int Salx=0;
             {
                 String NomLin;
                 StrCrear(NomLin);
-                printf("\nIngrese el nombre de la Linea: ");
+                printf("\nIngrese el nombre de la Linea a modificar: ");
                CargarString(NomLin);
                 printf("\nEl nombre ingresado es: ");
                MostrarString(NomLin);
@@ -351,25 +354,29 @@ int Salx=0;
                         printf("\nIngrese el nombre de Cuidad que desea agregar a la Linea: ");
                         CargarString(NomCiudad);
 
-                        if(Member(Ciu_dades,NomCiudad))
+                        if(Member(Ciu_dades,NomCiudad)==true)
                         {
                             Ciudad CiudNueva;
                             CiudNueva= Find(Ciu_dades,NomCiudad);
                             int CodCiudNueva = DarCodigo(CiudNueva);
-                            LPPF Tramo6 = FindABB(ArboLineas,NomLin);
+                                Linea Linnea= FindABB(ArboLineas,NomLin);///FIND DEVUELVE UNA LINEA
+
+                            LPPF Tramo6 =DarTramo(Linnea);
                             Parada UltimaParada = Ultimo(Tramo6);
                            int CodDesde= DarCodigoCiudadParada(UltimaParada);
                             //Dar codigo de la ciudad
 
                             if (DFSHayCamino(Grafo,CodDesde,CodCiudNueva))
                             {
-                                ]
+
                                 int NumUltimaParada = DarNumeroDeParda(UltimaParada);
-                                Parada nueva1=  DevolverPardaAux(CiudNueva, NumUltimaParada);//Va devolver una parada
+                                Parada nueva1=  DevolverPardaAux(CiudNueva, UltimaParada);//Va devolver una parada
                                 Insback(Tramo6,nueva1);
                                 //CREAR LINEA Y MOSTRARLA
-                                Linea
-                                MostrarLinea()
+
+                                printf("\nLLAMAR A ModifyA()");
+                                //Linea
+                                //MostrarLinea()
                             }
                             else
                             {

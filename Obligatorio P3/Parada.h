@@ -19,4 +19,6 @@ int DarNumeroDeParda(Parada P);
 Parada CargarParadaInicioFin(Ciudad C, int N);
 
 int DarCodigoCiudadParada(Parada Par);
+
+Parada DevolverPardaAux(Ciudad Origen, Parada Destino);
 #endif // PARADA_H_INCLUDED

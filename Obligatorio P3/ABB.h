@@ -18,7 +18,8 @@ typedef struct NodoAb
 typedef Nodoabb * Arbol;
 
 
-
+///Devolver si es Vacio un arbol
+bool EmptyA2 (Arbol a);
 
 
 //Operaciones Basicas
