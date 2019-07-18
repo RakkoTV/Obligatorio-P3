@@ -303,8 +303,6 @@ int Salx=0;
                       //String NomAux1;
 
 
-
-
                 printf("\n Desea ingresar otra Linea? 1- SI, 2- NO\n");
                 scanf("%d", &Salx);
 
@@ -377,10 +375,7 @@ int Salx=0;
                                  MostrarParada(NuevaParada);
                                  printf("\n ****");
                                  ModificarLinea(LinneAmodificar, NuevaParada); ///Le agregamos al final de la linea una nueva parada
-                                //Insback(TramoAmodificar,NuevaParada); // ingresamos esa nueva parada a la linea
-                                //printf("\n Paradas modificadas****");
-                               //ListarParadas(TramoAmodificar);
-                               //printf("\n ****");
+
                                 ModifyA(ArboLineas, LinneAmodificar); //le mandamos la nueva linea que esta modificada solamente los tramos
                                 //esto va a eliminar y volver a cargar con la informacion que contiene que esta actualizada
                                     printf("\n La nueva linea modifica es****");
