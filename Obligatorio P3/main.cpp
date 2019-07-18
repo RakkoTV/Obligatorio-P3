@@ -330,8 +330,74 @@ int Salx=0;
             break;
         case 6:
             {
+                String NomLin;
+                StrCrear(NomLin);
+                printf("\nIngrese el nombre de la Linea: ");
+               CargarString(NomLin);
+                printf("\nEl nombre ingresado es: ");
+               MostrarString(NomLin);
+               fflush(stdin);
 
-            }
+               if(EmptyA(ArboLineas)==true)
+               {
+                   printf("\nNo hay lineas para modificar");
+               }
+               else
+               {
+                   if(MemberABB(ArboLineas,NomLin))
+                   {
+                       String NomCiudad;
+                        StrCrear(NomCiudad);
+                        printf("\nIngrese el nombre de Cuidad que desea agregar a la Linea: ");
+                        CargarString(NomCiudad);
+
+                        if(Member(Ciu_dades,NomCiudad))
+                        {
+                            Ciudad CiudNueva;
+                            CiudNueva= Find(Ciu_dades,NomCiudad);
+                            int CodCiudNueva = DarCodigo(CiudNueva);
+                            LPPF Tramo6 = FindABB(ArboLineas,NomLin);
+                            Parada UltimaParada = Ultimo(Tramo6);
+                           int CodDesde= DarCodigoCiudadParada(UltimaParada);
+                            //Dar codigo de la ciudad
+
+                            if (DFSHayCamino(Grafo,CodDesde,CodCiudNueva))
+                            {
+                                ]
+                                int NumUltimaParada = DarNumeroDeParda(UltimaParada);
+                                Parada nueva1=  DevolverPardaAux(CiudNueva, NumUltimaParada);//Va devolver una parada
+                                Insback(Tramo6,nueva1);
+                                //CREAR LINEA Y MOSTRARLA
+                                Linea
+                                MostrarLinea()
+                            }
+                            else
+                            {
+                                printf("\nNo hay tramo que una la ultima parada con la cuidad ingresada");
+                            }
+                        }
+                        else
+                        {
+                            printf("\nLa Cuidad ingresada no existe");
+                        }
+
+                   }
+                   else
+                   {
+                       printf("\nLa linea ingresada no existe");
+                   }
+               }
+
+
+                /*
+Agregar una nueva parada a su recorrido.
+Dado el codigo que identifica a una línea,
+Se debe chequear que efectivamente exista un tramo entre la nueva parada y la ultima parada registrada
+ hasta el momento en la linea.*/
+
+
+
+     }
 
             break;
         case 7:
