@@ -27,4 +27,7 @@ bool LineaIgual (Linea Lin, String CodLin);
 //Dado un String y un Tramo se crea Linea
 void CargarLinea(Linea &Lin, String NombreLinea, LPPF Tramo );
 
+void MostrarLinea(Linea Lin);
+void MostrarLinea2(Linea Lin);
+
 #endif // LINEA_H_INCLUDED

@@ -19,7 +19,9 @@ bool EmptyA (Arbol a)
     if(a==NULL);
     {
         Es = true;
+        //printf("ES VACIO" );
     }
+
     return Es;
 }
 
@@ -61,7 +63,10 @@ bool MemberABB (Arbol a, String NombreLinea)
 
     String s;
     StrCrear(s);
+
     DarCodigoLinea(a->Info,s);
+    MostrarString(s);
+
     if (a==NULL)
     {
         return false;
@@ -83,7 +88,7 @@ bool MemberABB (Arbol a, String NombreLinea)
 
 
 
-//precondicion member
+///precondicion member
 Linea FindABB (Arbol a, String NombreLinea)
 {
 
@@ -271,12 +276,29 @@ void PreOrden(Arbol a)
 
  y finalmente el hijo derecho  */
 
-void Orden(Arbol a)
+ ///ListarDatosBásicos
+void orden2 (Arbol a)
 {
     if(a!=NULL)
     {
+        orden2(a->Izq);
+        MostrarLinea2(a->Info);
+        orden2(a->Der);
+    }
+
+
+}
+
+
+
+
+
+void Orden(Arbol a)
+{///Mostrar en ordenes
+    if(a!=NULL)
+    {
         Orden(a->Izq);
-        printf(" No olvidar programar llamar a mostrar Lista , a->Info");
+        MostrarLinea(a->Info);
         Orden(a->Der);
     }
 }

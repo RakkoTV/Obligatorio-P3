@@ -5,7 +5,7 @@
 ///MATRIZ COMUN
 
 //Declaraciones y cabezales
-const int N=3;
+const int N=4;
 typedef int GrafoMatriz[N][N];
 
 

@@ -42,4 +42,6 @@ void Insback (LPPF &l, Parada e);
 
 void AgregarTramo(LPPF &L, String NombreCiudad1, String NombreCiudad2);
 
+void ListarParadas (LPPF l);
+
 #endif // LPPF_H_INCLUDED

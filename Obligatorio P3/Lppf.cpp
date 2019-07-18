@@ -81,6 +81,7 @@ return aux->info;
 
 void ListarParadas (LPPF l)
 {
+    ///lISTAR PARADAS DE LA LINEA
     NodoT * aux = l.prim;
 
     while(aux!=NULL)

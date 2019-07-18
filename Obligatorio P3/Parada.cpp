@@ -22,8 +22,6 @@ Parada CargarParadaInicioFin(Ciudad C, int N)
 
 
 
-
-
 //
 Parada CargarParda (int NParda, Diccionario_Ciudad D, int ValidarCodigoCiudad )
 {
@@ -33,8 +31,6 @@ String s;
 Ciudad CidAux;
     do
     {
-
-
          //s2;
         StrCrear(s);
         //StrCrear(s2);
@@ -77,4 +73,7 @@ void MostrarParada(Parada P)
     printf("\n El  numero de Parada es: %d", P.NumPar);
 }
 
-
+int DarNumeroDeParda(Parada P)
+{
+    return P.NumPar;
+}

@@ -13,7 +13,8 @@ int NumPar;
 Parada CargarParda(int NParda, Diccionario_Ciudad D, int ValidarCodigoCiudad );
 
 void MostrarParada(Parada P);
-
+///NUMERO DE PARADA
+int DarNumeroDeParda(Parada P);
 
 Parada CargarParadaInicioFin(Ciudad C, int N);
 

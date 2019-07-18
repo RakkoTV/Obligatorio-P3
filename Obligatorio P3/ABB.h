@@ -2,6 +2,7 @@
 #define ABB_H_INCLUDED
 
 #include<Linea.h>
+
 //#include<stdio.h>
 
 
@@ -30,6 +31,10 @@ void MakeA (Arbol &a);
 bool MemberABB (Arbol a, String NombreLinea);
 bool EmptyA (Arbol a);
 void DeleteA (Arbol &a, String  NLinea);
+
+///precondicion member
+Linea FindABB (Arbol a, String NombreLinea);
+
 //Dado un valor y 2 arboles. Poner el valor como padre
  // y los arboles como hijos
 //CREA EL NODO
@@ -82,6 +87,11 @@ Linea MinimoRecursivo (Arbol a);
 //Devolver el minimo elemento
 //Precondicion arbol no vacio
 int MinimoInteractivo (Arbol a);
+
+//Crea nodo de arbol NO BORRAR
+//void CargarNodoAux(Arbol &ArboLineas, String NomAux1);
+
+
 
 //Precondicion arbol no vacio
 //Borrar el minimo
@@ -142,7 +152,7 @@ int ContarNodos (Arbol a);
 Linea MaximoRecursivo (Arbol a);
 
 
-
+void orden2 (Arbol a);
 
 bool EsHoja(Arbol a, int N);
 

@@ -18,7 +18,7 @@ Lin.Tramo=Tramo;
 
 }
 
-
+///Devulve el codigo de la linea
 void DarCodigoLinea(Linea Lin, String &CodAl)
 {
     StrCop(CodAl, Lin.CodAlf);
@@ -58,6 +58,35 @@ bool LineaIgual (Linea Lin, String CodLin)
           return  StringComparar(s1, CodLin);
 }
 
+void MostrarLinea(Linea Lin)
+{/// codigo origen destino y cada una de las paradas
+    printf("\nNombre de Linea: ");
+    MostrarString(Lin.CodAlf);
 
+    printf("\nPardas: ");
+    ListarParadas(Lin.Tramo);
+
+}
+
+void MostrarLinea2(Linea Lin)
+{/// (código, origen, destino y cantidad de paradas),
+    printf("\nNombre de Linea: ");
+    MostrarString(Lin.CodAlf);
+
+    printf("\nOrigen: ");
+
+    Parada Prim1=Primero(Lin.Tramo);
+    MostrarParada(Prim1);
+    printf("\nDestino: ");
+    Parada Ult2=Ultimo(Lin.Tramo);
+    MostrarParada(Ult2);
+    int ult = DarNumeroDeParda(Ult2);
+    printf("\nLa cantidad de parada es: %d",ult);
+
+
+
+   // ListarParadas(Lin.Tramo);
+
+}
 
 

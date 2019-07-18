@@ -209,7 +209,7 @@ void StrCrear(String &s)
 }
 //Librerar memoria y dejar el string vacio
 void StrDestruir(String &s)
-{
+{///Librerar memoria y dejar el string vacio
     delete []s;
     s= NULL;
 }
@@ -225,7 +225,7 @@ int StrLar(String s)
 }
 
 
-//strcop que reciba dos String y copia el segundo en el primero.
+///strcop que reciba dos String y copia el segundo en el primero.
 void StrCop(String &s2,String s1 )
 {
     int i=0;
@@ -306,7 +306,7 @@ void StrswpInvierte(String &s, String &s2)
 //despliegue un String por pantalla.
 void MostrarString(String s)
 {
-    ///utilizamos puts y gets
+    ///despliegue un String por pantalla.
     int i=0;
 //printf("Entro al mostrar");
     while(s[i]!='\0')
@@ -319,7 +319,10 @@ void MostrarString(String s)
 
 //recibe dos strings y devuelve TRUE si el primero de ellos es
 //menor (en orden alfab�tico) que el segundo
-bool strmen(String s1,String s2){
+bool strmen(String s1,String s2)
+{
+    ///recibe dos strings y devuelve TRUE si el primero de ellos es
+///menor (en orden alfab�tico) que el segundo
 int i=0;
 bool encontre = false;
 bool menor = false;
@@ -364,8 +367,8 @@ int i=0;
                 }
             return menor;
 }
-///utilizar en hash para buscar en secuencia
-//streq que reciba dos String y devuelva TRUE si ambos String son iguales o FALSE en caso contrario.
+//utilizar en hash para buscar en secuencia
+///streq que reciba dos String y devuelva TRUE si ambos String son iguales o FALSE en caso contrario.
 bool StringComparar(String s1,String s2)
 {// si son iguales
     int i=0;
