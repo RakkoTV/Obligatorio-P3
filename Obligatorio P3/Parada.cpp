@@ -12,6 +12,12 @@ int NumPar;
 
 
 
+int DarCodigoCiudadParada(Parada Par)
+{
+
+    return DarCodigo(Par.Ciud);
+}
+
 Parada CargarParadaInicioFin(Ciudad C, int N)
 {
     Parada Para;
@@ -64,6 +70,14 @@ Ciudad CidAux;
 
 
 
+}
+
+Parada DevolverPardaAux(Ciudad Origen, Parada Destino)
+{
+    Parada nueva;
+    nueva.NumPar =  Destino.NumPar +1;
+    nueva.Ciud = Origen;
+    return nueva;
 }
 
 void MostrarParada(Parada P)
