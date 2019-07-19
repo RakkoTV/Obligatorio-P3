@@ -30,16 +30,7 @@ return l.prim->info;
 }
 
 
-//Precondición : !Vacia(l)
-void Resto (LPPF &l)
-{
-NodoT * aux = l.prim->sig;
-delete (l.prim);
-l.prim = aux;
-if (l.prim == NULL)
-l.ult = NULL;
 
-}
 
 
 
@@ -61,7 +52,6 @@ return largo;
 
 
 /// k-esimo
-
 Parada kesimo(LPPF l, int NumParada)
 {
  NodoT * aux = l.prim;
@@ -95,7 +85,7 @@ void ListarParadas (LPPF l)
 
 
 
-//Precondición: !Vacia(l)
+///Precondición: !Vacia(l) Da ultimo elemento
 Parada Ultimo (LPPF l)
 {
 return l.ult->info;
@@ -122,6 +112,9 @@ l.ult = nuevo;
 }
 
 
+
+
+
 ///hacer todo esto en LPPF
 ///precondicion las ciudades son member
 void AgregarTramo(LPPF &L, String NombreCiudad1, String NombreCiudad2)
@@ -136,4 +129,32 @@ void AgregarTramo(LPPF &L, String NombreCiudad1, String NombreCiudad2)
 
 
 
+}
+
+///Precondición : !Vacia(l) Elimina el primer elemento
+void Resto (LPPF &l)
+{
+NodoT * aux = l.prim->sig;
+delete (l.prim);
+l.prim = aux;
+if (l.prim == NULL)
+l.ult = NULL;
+
+}
+
+
+///Dada una lppf la invierte
+void Invertir (LPPF &L)
+{
+    LPPF Aux;
+    Crear(Aux);
+    while(L.prim!=NULL)
+    {
+        Insfront(Aux, L.prim->info);
+        Resto(L);
+        //L.prim=L.prim->sig;
+    }
+    //Insfront(Aux, L.prim->info);
+
+   L=Aux;
 }

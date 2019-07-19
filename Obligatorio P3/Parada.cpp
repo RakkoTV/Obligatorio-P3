@@ -20,10 +20,11 @@ int DarCodigoCiudadParada(Parada Par)
 
 Parada CargarParadaInicioFin(Ciudad C, int N)
 {
-    Parada Para;
-    Para.Ciud=C;
-    Para.NumPar=N;
-    return Para;
+    ///entra una ciudad y un numero de parada y devulve una parada
+    Parada ParadaNuevaa;
+    ParadaNuevaa.Ciud=C;
+    ParadaNuevaa.NumPar=N;
+    return ParadaNuevaa;
 }
 
 

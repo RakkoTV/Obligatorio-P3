@@ -140,7 +140,7 @@ for(int j=0; j<N; j++)///PARA QUE  VISITE LOS GRAFOS DISCONEXOS
 }
 
 
-//Devuelve un array con los vertices que componen el camino desde al
+///Devuelve un array con los vertices que componen el camino desde al
 void DFSDarCaminoGrafoMatriz (GrafoMatriz G, int desde ,int al, ArrayConTope &Arr )
 {
 

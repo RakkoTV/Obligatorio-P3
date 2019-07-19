@@ -44,4 +44,5 @@ void AgregarTramo(LPPF &L, String NombreCiudad1, String NombreCiudad2);
 
 void ListarParadas (LPPF l);
 
+void Invertir (LPPF &L);
 #endif // LPPF_H_INCLUDED

@@ -11,29 +11,30 @@ void CargarNodoAux(Arbol &ArboLineas, Diccionario_Ciudad Ciu_dades,GrafoMatriz G
                 ///BORRAR DESPUES
                 LPPF TramoAux;
                 Crear(TramoAux);
-                Parada Parada1;
-                       String Origen, Destino;
-                       StrCrear(Origen);
-                       StrCrear(Destino);
+
+                       String NomOrigen, NomDestino;
+                       StrCrear(NomOrigen);
+                       StrCrear(NomDestino);
                        printf("\n Ingrese el Nombre de la ciudad de Origen:  ");
-                       CargarString(Origen);
+                       CargarString(NomOrigen);
                        fflush(stdin);
                        printf("\n Ingrese el Nombre de la ciudad de Destino: ");
-                       CargarString(Destino);
+                       CargarString(NomDestino);
                        fflush(stdin);
-                                        if(!Member(Ciu_dades, Origen)&&(!Member(Ciu_dades, Destino)))
+                                        /// ver si no seria un or logico
+                                        if(!Member(Ciu_dades, NomOrigen)||(!Member(Ciu_dades, NomDestino)))
                                         {
                                             printf("\nLa o las ciudades ingresadas  no existen vuelva a ingresar o no existe un camino entre ambas");
                                             fflush(stdin);
                                         }
                                         else
                                             {
-                                                Ciudad CidA, CidB;
-                                                CidA=Find(Ciu_dades, Origen);
-                                                CidB=Find(Ciu_dades, Destino);
+                                                Ciudad CidOrigen, CidDestino;
+                                                CidOrigen=Find(Ciu_dades, NomOrigen);
+                                                CidDestino=Find(Ciu_dades, NomDestino);
 
-                                                int CodOrigen=DarCodigo(CidA); // numero de parada 1
-                                                int CodDestino=DarCodigo(CidB);// numero de parada tope+1
+                                                int CodOrigen=DarCodigo(CidOrigen); // numero de parada 1
+                                                int CodDestino=DarCodigo(CidDestino);// numero de parada tope+1
 
                                                 if(!DFSHayCamino(Grafo,CodOrigen, CodDestino))
                                                 {
@@ -43,22 +44,35 @@ void CargarNodoAux(Arbol &ArboLineas, Diccionario_Ciudad Ciu_dades,GrafoMatriz G
                                                 {
                                                 ///Si hay camino
 
+                                                ///Devuelve un array con los vertices que componen el camino desde al
                                                DFSDarCaminoGrafoMatriz(Grafo,CodOrigen, CodDestino, ARRE );
 
-                                               int NumParda=ARRE.tope-1; // vale 1 // ver otros casos
 
-                                               Parada1=CargarParadaInicioFin(CidB,ARRE.tope);
-                                               Insfront(TramoAux, Parada1);
 
-                                               for(int i=NumParda;i>1; i--)
-                                                   {
-                                                    printf("\nIngresar Paradas intermedias: ");
-                                                    Parada1=CargarParda(i, Ciu_dades, ARRE.InfoVertice[i]);
-                                                    Insfront(TramoAux, Parada1);
-                                                   }
-
-                                                Parada1=CargarParadaInicioFin(CidA,1);
+                                               ///Cargamos al revez con insfront
+                                               Parada Parada1;
+                                               ///entra una ciudad y un numero de parada y devulve una parada
+                                               Parada1=CargarParadaInicioFin(CidOrigen,1);
                                                 Insfront(TramoAux, Parada1);
+
+
+                                    for(int i=2; i<ARRE.tope;i++) //verificar esto
+
+                                    {
+                                    printf("\nIngresar Paradas intermedias: ");
+                                    printf("\n******Verificar que este cargando bien el numero de parada: ");
+
+                                    Parada1=CargarParda(i, Ciu_dades, ARRE.InfoVertice[i]);///ARRE.InfoVertice[i] tiene el codigo de la ciudad
+
+                                    ///antes de hacer insfront validar que
+                                    Insfront(TramoAux, Parada1);
+                                    }
+                                    ///entra una ciudad y un numero de parada y devulve una parada
+                                               Parada1=CargarParadaInicioFin(CidDestino,ARRE.tope);
+                                               Insfront(TramoAux, Parada1);
+                                                /// iNVERTIR LPPF esto es TramoAux
+
+                                                Invertir(TramoAux);
                                                 Linea LineaNueva;
                                                 CargarLinea( LineaNueva,NomAux12,TramoAux);
 
@@ -71,8 +85,8 @@ void CargarNodoAux(Arbol &ArboLineas, Diccionario_Ciudad Ciu_dades,GrafoMatriz G
 
 
        StrDestruir(NomAux12);                                     }
-StrDestruir(Origen);
-StrCrear(Destino);
+StrDestruir(NomOrigen);
+StrCrear(NomDestino);
 
 
 
