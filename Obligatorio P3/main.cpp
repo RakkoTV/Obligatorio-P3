@@ -191,9 +191,9 @@ ss3="rocha";
                         CargarString(s2);
                         fflush(stdin);
 
-                if(!Member(Ciu_dades, s)&&(!Member(Ciu_dades, s2)))
+                if(!Member(Ciu_dades, s)||(!Member(Ciu_dades, s2)))
                 {
-                    printf("\nLa o las ciudades ingresadas  no existen vuelva a ingresar");
+                    printf("\nLa o las ciudades ingresadas  no existen vuelva a ingresar\n");
                     fflush(stdin);
                 }
                 else{
@@ -233,7 +233,7 @@ ss3="rocha";
         CargarString(s2);
         fflush(stdin);
 
-        if(!Member(Ciu_dades, s)&&(!Member(Ciu_dades, s2)))
+        if(!Member(Ciu_dades, s)||(!Member(Ciu_dades, s2)))
         {
             printf("\nLa o las ciudades ingresadas  no existen vuelva a ingresar");
             fflush(stdin);
