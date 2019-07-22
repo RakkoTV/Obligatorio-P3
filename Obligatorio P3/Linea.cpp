@@ -10,9 +10,11 @@ typedef struct
 
 //Dado un String y un Tramo se crea Linea
 
+
+
 void CargarLinea(Linea &Lin, String NombreLinea, LPPF Tramo )
 {
-
+printf("Ver si hay que hacer un crear lppf");
 StrCop(Lin.CodAlf, NombreLinea);
 Lin.Tramo=Tramo;
 

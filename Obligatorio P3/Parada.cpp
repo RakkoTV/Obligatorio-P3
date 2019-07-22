@@ -45,25 +45,23 @@ Ciudad CidAux;
       CargarString(s);
        fflush(stdin);
 
-
-
-
-        if(!Member(D, s))
+        if(!Member(D, s)&&(DarCodigo(CidAux)!=ValidarCodigoCiudad))
         {
-            printf("\nLa ciudad ingresada  no existen vuelva a ingresar");
+            printf("\nLa ciudad ingresada  no existe o no hay un tramo entre ellas vuelva a ingresar");
             fflush(stdin);
         }
         else
         {
-
             CidAux=Find(D,s );
         }
-    }while(!Member(D, s)&&(DarCodigo(CidAux)!=ValidarCodigoCiudad));
+
+    }while(!Member(D, s)||(DarCodigo(CidAux)!=ValidarCodigoCiudad));
+
 
 
     ///Ciudad origen
     Par.Ciud=CidAux;
-    Par.NumPar=ValidarCodigoCiudad;// auto incrementado arranca en 2
+    Par.NumPar=ValidarCodigoCiudad+1;// auto incrementado arranca en 2
 
     //Insfront(L, Par);
     ///Ciudad Destino

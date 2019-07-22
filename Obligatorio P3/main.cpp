@@ -3,11 +3,12 @@
 #include<Menu.h>
 
 
+
 void CargarNodoAux(Arbol &ArboLineas, Diccionario_Ciudad Ciu_dades,GrafoMatriz Grafo, ArrayConTope ARRE, String NomAux12 )
 {
 
     ///CargarArbolAuxiliar
-//CargarNodoAux(ArboLineas, NomAux1);//Ciu_dades,Grafo,ARRE
+
                 ///BORRAR DESPUES
                 LPPF TramoAux;
                 Crear(TramoAux);
@@ -15,6 +16,7 @@ void CargarNodoAux(Arbol &ArboLineas, Diccionario_Ciudad Ciu_dades,GrafoMatriz G
                        String NomOrigen, NomDestino;
                        StrCrear(NomOrigen);
                        StrCrear(NomDestino);
+                       fflush(stdin);
                        printf("\n Ingrese el Nombre de la ciudad de Origen:  ");
                        CargarString(NomOrigen);
                        fflush(stdin);
@@ -47,7 +49,7 @@ void CargarNodoAux(Arbol &ArboLineas, Diccionario_Ciudad Ciu_dades,GrafoMatriz G
                                                 ///Devuelve un array con los vertices que componen el camino desde al
                                                DFSDarCaminoGrafoMatriz(Grafo,CodOrigen, CodDestino, ARRE );
 
-
+                                                fflush(stdin);
 
                                                ///Cargamos al revez con insfront
                                                Parada Parada1;
@@ -60,18 +62,19 @@ void CargarNodoAux(Arbol &ArboLineas, Diccionario_Ciudad Ciu_dades,GrafoMatriz G
 
                                     {
                                     printf("\nIngresar Paradas intermedias: ");
-                                    printf("\n******Verificar que este cargando bien el numero de parada: ");
 
-                                    Parada1=CargarParda(i, Ciu_dades, ARRE.InfoVertice[i]);///ARRE.InfoVertice[i] tiene el codigo de la ciudad
 
-                                    ///antes de hacer insfront validar que
+                                    Parada1=CargarParda(i, Ciu_dades, ARRE.InfoVertice[i-1]);///ARRE.InfoVertice[i] tiene el codigo de la ciudad
+                                    printf("\n******///antes de hacer insfront validar que: ");
+
                                     Insfront(TramoAux, Parada1);
+
                                     }
                                     ///entra una ciudad y un numero de parada y devulve una parada
                                                Parada1=CargarParadaInicioFin(CidDestino,ARRE.tope);
                                                Insfront(TramoAux, Parada1);
                                                 /// iNVERTIR LPPF esto es TramoAux
-
+                                                fflush(stdin);
                                                 Invertir(TramoAux);
                                                 Linea LineaNueva;
                                                 CargarLinea( LineaNueva,NomAux12,TramoAux);
@@ -83,14 +86,13 @@ void CargarNodoAux(Arbol &ArboLineas, Diccionario_Ciudad Ciu_dades,GrafoMatriz G
 
                                                }
 
-
        StrDestruir(NomAux12);                                     }
 StrDestruir(NomOrigen);
-StrCrear(NomDestino);
-
-
+StrDestruir(NomDestino); /// CAMBIE ESTO
 
 }
+
+
 
 
 
@@ -270,53 +272,58 @@ ss3="rocha";
             //printf("4. Ingresar una nueva línea a la empresa,
             //chequeando que no existiera previamente otra línea con el mismo código alfanumérico.\n");
 {
-
-
 int Salx=0;
-                      String NomAux1;
-
-            do
-                {
 
 
-                      //
-            fflush(stdin);
+            do{
+
                printf("\n Ingresar una nueva línea a la empresa\n");
 
-               StrCrear(NomAux1);/// VER SI AL FINAL HAY QUE DESTRUIR
-               printf("\nIngrese el nombre de la Linea: ");
-               CargarString(NomAux1);
 
 
-               if(EmptyA(ArboLineas)==true) // Si el arbol  es vacio
+               if(EmptyA2(ArboLineas)==true) // Si el arbol  es vacio
                {
-                CargarNodoAux(ArboLineas, Ciu_dades,Grafo, ARRE, NomAux1 );
-                MostrarString(NomAux1);
-                StrDestruir(NomAux1);
+                String NomAux123;
+                StrCrear(NomAux123);
+
+                printf("\nIngrese el nombre de la Linea: ");
+                CargarString(NomAux123);
+
+
+                CargarNodoAux(ArboLineas, Ciu_dades,Grafo, ARRE, NomAux123 );
+                StrDestruir(NomAux123);
                 fflush(stdin);
                }
-               else///Arbol vacio cargar todo
-                {
-                if(MemberABB(ArboLineas,NomAux1))// cuando este cargando
+               else
+               {
+
+                  // InicializarArrayConTope(ARRE);
+                   fflush(stdin);
+                   String Nom;
+                StrCrear(Nom);
+
+                printf("\nParte 2 Ingrese el nombre de la Linea: ");
+                fflush(stdin);
+
+                CargarString(Nom);
+
+
+                if(!MemberABB(ArboLineas,Nom))// cuando este cargando
                     {
-                    printf("\n Error, La linea que intenta ingresar ya existe");
+                     //   printf("\n**********nunca entra a esto******** cuando este cargando");
+                   CargarNodoAux(ArboLineas, Ciu_dades,Grafo, ARRE, Nom );
+                    StrDestruir(Nom);
                     }
                     else///Si no es miembro
                     {
-                    printf("\n cuando este cargando");
-                    fflush(stdin);
-                   CargarNodoAux(ArboLineas, Ciu_dades,Grafo, ARRE, NomAux1 );
-
+                    printf("\n Error, La linea que intenta ingresar ya existe");
+                    StrDestruir(Nom);
                     }
+
             }
-                fflush(stdin);
-
 
 
                 fflush(stdin);
-                      //String NomAux1;
-
-
                 printf("\n Desea ingresar otra Linea? 1- SI, 2- NO\n");
                 scanf("%d", &Salx);
 
@@ -381,20 +388,20 @@ int Salx=0;
 
                             if (DFSHayCamino(Grafo,CodDesde,CodCiudNuevaAsta))// si hay un camino de la la vieja a la nueva
                             {
-                                printf("\n Hay un camino ver si esta ingresando el nuevo tramo al arbol");
+                               // printf("\n Hay un camino ver si esta ingresando el nuevo tramo al arbol");
 
 
                                 Parada NuevaParada=  DevolverPardaAux(CiudDeLaNuevaParda, UltimaParada);//Va devolver la nueva parada
-                                printf("\n ****La nueva parada a ingresar es:");
+                                printf("\nLa nueva parada a ingresar es:");
                                  MostrarParada(NuevaParada);
-                                 printf("\n ****");
-                                 ModificarLinea(LinneAmodificar, NuevaParada); ///Le agregamos al final de la linea una nueva parada
+
+                                 ModificarLinea(LinneAmodificar, NuevaParada);
 
                                 ModifyA(ArboLineas, LinneAmodificar); //le mandamos la nueva linea que esta modificada solamente los tramos
                                 //esto va a eliminar y volver a cargar con la informacion que contiene que esta actualizada
-                                    printf("\n La nueva linea modifica es****");
+                                    printf("\n La nueva linea modifica es:");
                                     MostrarLinea(LinneAmodificar);
-                                    printf("\n ****");
+
                             }
                             else
                             {

@@ -24,20 +24,6 @@ bool EmptyA2 (Arbol a)
 }
 
 
-///Devolver si es Vacio un arbol
-bool EmptyA (Arbol a)
-{
-    bool Es=false;
-    if(a==NULL);
-    {
-        Es = true;
-        //printf("ES VACIO" );
-    }
-
-    return Es;
-}
-
-
 //Devolver La raiz
 //Precondicion arbol no vacio
 Linea DarRaiz(Arbol a)
@@ -73,24 +59,26 @@ Arbol HijoDerecho (Arbol a)
 bool MemberABB (Arbol a, String NombreLinea)
 {
 
-    String s;
-    StrCrear(s);
-
-    DarCodigoLinea(a->Info,s);
-    MostrarString(s);
+String Saux;
+  //  MostrarString(s);
 
     if (a==NULL)
     {
         return false;
     }
     else
-        if(StringComparar(s,NombreLinea))
+    {
+    StrCrear(Saux);
+    DarCodigoLinea(a->Info,Saux);
+    }
+
+        if(StringComparar(Saux,NombreLinea))
         {
             return true;
         }
 
         else
-            if(strmen(NombreLinea,s))
+            if(strmen(NombreLinea,Saux))
             {
                 return MemberABB(a->Izq, NombreLinea);
             }
